@@ -3,10 +3,12 @@ from uuid import uuid4
 
 import chromadb
 
+from nova_vida_ia import settings
+
 
 class ChromaDB:
     def __init__(self):
-        self.vector_db = chromadb.HttpClient(host='nova_vida_ia-chromadb-1', port=8000)
+        self.vector_db = chromadb.HttpClient(host=settings.CHROMA_HOST, port=settings.CHROMA_PORT)
         self.collection = self.vector_db.get_or_create_collection("chatbot_memory")
 
     def get_user_preferences(self):

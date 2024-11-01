@@ -41,6 +41,7 @@ class Chatbot:
 
         system_message = SystemMessage(content=template)
         input_message = HumanMessage(content=user_msg)
+
         for event in app.stream({"messages": [system_message, input_message]}, config, stream_mode="values"):
             event_chats.append(event["messages"][-1])
 
