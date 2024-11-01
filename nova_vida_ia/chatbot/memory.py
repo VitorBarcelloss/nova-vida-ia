@@ -6,7 +6,7 @@ import chromadb
 
 class ChromaDB:
     def __init__(self):
-        self.vector_db = chromadb.HttpClient(host='localhost', port=8001)
+        self.vector_db = chromadb.HttpClient(host='nova_vida_ia-chromadb-1', port=8000)
         self.collection = self.vector_db.get_or_create_collection("chatbot_memory")
 
     def get_user_preferences(self):

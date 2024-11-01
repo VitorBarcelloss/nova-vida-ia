@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - chromadb
+    env_file:
+      .env
+
+  chromadb:
+    image: chromadb/chroma:0.5.17.dev9
+    ports:
+      - "8001:8000"
+    volumes:
+      - chromadb_data:/data
+
+volumes:
+  chromadb_data:
